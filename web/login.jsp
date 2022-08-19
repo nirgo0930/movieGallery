@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="./top.jsp" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,7 @@
 <body>
     <div>
         <table>
-            <form action="" method="post">
+            <form action="loginList.jsp" method="post">
                 <tr>
                     <td>UID:</td>
                     <td><input type="text" name="userID"></td>

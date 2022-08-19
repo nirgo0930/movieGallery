@@ -17,7 +17,10 @@
   CallableStatement CS; //CS=CN.callableStatement(sql)
         ResultSet RS; //조회한결과를 RS기억  RS.next( )
 
+  String msg;
   String uid,pwd;
+
+  int Gtotal=0;
 %>
 
 <%
