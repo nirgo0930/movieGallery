@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: neo09
-  Date: 2022-08-19
-  Time: 오전 10:51
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+    <head>
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>영화 추천 게시판</h1>
+        <div class="container">
+
+            <form action="post">
+                ID : <input type="text"><br/>
+                PW : <input type="password"><br/>
+                <button type="submit">login</button>
+                <button type="submit">Sing Up</button>
+            </form>
+        </div>
+
+    </body>
 </html>
