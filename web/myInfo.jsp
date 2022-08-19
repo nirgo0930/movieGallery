@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>승환이의 무비리스트</title>
+    <title>Title</title>
 </head>
 <body>
 

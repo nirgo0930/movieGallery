@@ -11,10 +11,11 @@
 %>
 <li style="float:right"><a class="menuLink" href="login.jsp">login</a></li>
     <%
-
         //로그인 되어있을 때
     } else{
     %>
+    <li><a class="menuLink" href="myInfo.jsp">내 정보</a></li>
+
     <li style="float:right"><%= user %>님 반갑습니다.</li>
     <li style="float:right"><a class='menuLink' href="logout.jsp">logout</a></li>
     <% } %>
