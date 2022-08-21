@@ -6,6 +6,10 @@
     <nav id="topMenu">
         <ul>
             <li><a class="menuLink" href="movieList.jsp">메인 페이지</a></li>
+            <li><a class="menuLink" href="">글 등록</a></li>
+            <li><a class="menuLink" href="">포스터 리스트</a></li>
+            <li><a class="menuLink" href="signup.jsp">회원 가입</a></li>
+
             <%
                 String user = (String) session.getAttribute("pass");
 
@@ -16,10 +20,7 @@
             <%
                 //로그인 되어있을 때
             } else {
-                //String session1=session;
 
-                //String id=session.getAttribute("")
-                //System.out.println(session);
             %>
             <li><a class="menuLink" href="myInfo.jsp?id=<%=user%>">내 정보</a></li>
 

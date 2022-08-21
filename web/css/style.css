@@ -7,27 +7,27 @@ nav{ margin-bottom: 25px; }
 }
 
 #topMenu ul li{
-    list-style: none;     /* �� ��ȣ ����  list-style: none;   */
-    color: white;         /* ���� #555555 ����*/
+    list-style: none;
+    color: white;
     background-color:  #FF5500;
-    float: left;      /* float: left;  li �±��� ��� ������ �������� ���� */
-    line-height: 30px; /* �ϳ��� �� ���� */
-    vertical-align: middle; /* ���� ���� �߰� ���� */
-    text-align: center;      /* ���� ���� ���� */
+    float: left;
+    line-height: 30px;
+    vertical-align: middle;
+    text-align: center;
 }
 
 
-#topMenu .menuLink{   /* A �±� �Ӽ� ���� */
-    text-decoration: none;  /* ���� ���� */
+#topMenu .menuLink{
+    text-decoration: none;
     color: white;
-    display: block;   /* A ���� ���� ���� ��ũ ���� */
+    display: block;
     width: 150px;
     font-weight: bold;
     font-family: comic Sans MS ;
     font-size: 16pt;
 }
 
-#topMenu .menuLink:hover {  /* A �±׿� ���콺 over �Ӽ� ���� */
+#topMenu .menuLink:hover {
     color: #10385A;
     background-color: #C0DEF9;
     font-size: 16pt;

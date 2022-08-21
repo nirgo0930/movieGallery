@@ -18,9 +18,13 @@
 %>
 <table>
 <tr>
-<td>UID:<%=RS.getString("userid")%></td>
-<td>PWD:<%=RS.getString("pwd")%></td>
+    <hr>
+
+    <td>UID:<%=RS.getString("userid")%></td>
 </tr>
+    <tr>
+        <td>PWD:<%=RS.getString("pwd")%></td>
+    </tr>
 </table>
 </body>
 </html>
