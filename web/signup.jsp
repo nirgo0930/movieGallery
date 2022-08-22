@@ -4,38 +4,38 @@
 
 
 <html>
-<head>
-    <title>Title</title>
-    <script src="./js/InputJS.js"></script>
+    <head>
+        <title>Title</title>
+        <script src="./js/InputJS.js"></script>
 
-</head>
-<body>
-<div class="all" align="center">
-    <div class="title">
-        <br>
-        회원가입
+    </head>
+    <body>
+        <div class="all" align="center">
+            <div class="title">
+                <br>
+                회원가입
 
-    </div>
-    <form name="iform" method="post" enctype="multipart/form-data" action="./signupSave.jsp">
-        <table class="table1">
-            <tr>
-                <th>UID</th>
-                <td colspan="2">
-                    <input type="text" size="10" name="uid">
-                    <input type="button" value="중복확인" onclick="checkUID()">
-                </td>
-            </tr>
-            <tr>
-                <th>PWD</th>
-                <td colspan="2"><input type="text" name="pwd"></td>
-            </tr>
-        </table>
+            </div>
+            <form name="iform" method="post" enctype="multipart/form-data" action="./signupSave.jsp">
+                <table class="table1">
+                    <tr>
+                        <th>UID</th>
+                        <td colspan="2">
+                            <input type="text" size="10" name="uid">
+                            <input type="button" value="중복확인" onclick="checkUID()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>PWD</th>
+                        <td colspan="2"><input type="text" name="pwd"></td>
+                    </tr>
+                </table>
 
-        <p>
-            <input type="submit" value="회원가입">
-            <input type="button" value="취소" onclick="location.href='bbsList.jsp'">
-    </form>
-</div>
+                <p>
+                    <input type="submit" value="회원가입">
+                    <input type="button" value="취소" onclick="location.href='movieList.jsp'">
+            </form>
+        </div>
 
-</body>
+    </body>
 </html>
