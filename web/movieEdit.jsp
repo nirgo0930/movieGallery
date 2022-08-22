@@ -8,6 +8,27 @@
     </head>
     <body>
         <%
+            try {
+                session.getAttribute("pass").toString().isEmpty();
+            } catch (Exception e) {
+                response.sendRedirect("login.jsp");
+            }
+
+            try {
+                if (!session.getAttribute("pass").toString().equals(uid)) {
+                    throw new IllegalAccessException("wrong user");
+                }
+            } catch (IllegalAccessException e) {
+                System.out.println(e.toString());
+
+                response.sendRedirect("movieList.jsp");
+            } catch (Exception e) {
+                System.out.println(e.toString());
+                response.sendRedirect("login.jsp");
+            }
+        %>
+
+        <%
             //testDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
             pId = request.getParameter("Pid");
             msg = "select * from MovieRecommend where Pid = " + pId;
@@ -20,34 +41,24 @@
                 mTitle = RS.getString("Mtitle");
                 mDate = RS.getDate("OpenDate");
                 mActors = RS.getString("MainActor");
-                isUnkown = RS.getString("userInfo").equals("1") ? true : false;
+                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
                 mContent = RS.getString("content");
+                mImage = RS.getString("movieImage");
+
+                System.out.println("pdate : " + RS.getDate("Pdate"));
             }
 
-        %>
-
-        <%
-            try {
-                if (!session.getAttribute("pass").toString().equals(uid)) {
-                    throw new IllegalAccessException("wrong user");
-                }
-            } catch (IllegalAccessException e) {
-                System.out.println(e.toString());
-                response.sendRedirect("movieList.jsp");
-            } catch (Exception e) {
-                System.out.println(e.toString());
-                response.sendRedirect("login.jsp");
-            }
         %>
         <div class="container">
             <div class="border rounded-3" style="padding: 20px">
                 <form class="row g-3" method="post" enctype="multipart/form-data" action="movieSave.jsp">
+                    <input type="text" hidden id="pId" name="pId" value="<%=pId%>">
                     <div class="col-md-12">
                         <label for="title" class="form-label">제목</label>
                         <input type="text" class="form-control" id="title" name="title" value=<%=pTitle%>>
                     </div>
                     <div class="col-md-6">
-                        <label for="title" class="form-label">영화제목</label>
+                        <label for="mTitle" class="form-label">영화제목</label>
                         <input type="text" class="form-control" id="mTitle" name="mTitle" value=<%=mTitle%>>
                     </div>
                     <div class="col-md-6">
@@ -63,7 +74,7 @@
                     <div class="col-6">
                         <label for="mImg" class="form-label">대표 이미지</label>
                         <input type="file" class="form-control" id="mImg" name="mImg"
-                               value="<%=mImg %>">
+                               value="<%=mImage %>">
                     </div>
                     <div class="col-12">
                         <label for="content" class="form-label">내용 설명</label>
@@ -75,7 +86,7 @@
                             <label class="form-check-label" for="unknown"> 익명 게시 여부 </label>
                             <input class="form-check-input" type="checkbox" id="unknown" name="unknown"
                                    value="isUnknown"
-                                <%if(isUnkown){%>
+                                <% if(isUnknown){%>
                                    checked
                                 <%}%>
                             >
