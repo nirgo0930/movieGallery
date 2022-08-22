@@ -61,17 +61,17 @@
         <td colspan="4">
             <%
                 if(startpage>10){
-                    out.println("<a href=guestList.jsp?pageNum="+(startpage-10)+">[이전]</a>");
+                    out.println("<a href=movieList.jsp?pageNum="+(startpage-10)+">[이전]</a>");
                 }
                 for(int i=startpage; i<=endpage; i++){
                     if(i==pageNUM){
                         out.println("<font style='font-size:24pt; color:blue'>["+i+"]</font>");
                     }else{
-                        out.println("<a href=guestList.jsp?pageNum="+i+">["+i+"]</a>");
+                        out.println("<a href=movieList.jsp?pageNum="+i+">["+i+"]</a>");
                     }
                 }
                 if(endpage<pagecount){
-                    out.println("<a href=guestList.jsp?pageNum="+(startpage+10)+">[다음]</a>");
+                    out.println("<a href=movieList.jsp?pageNum="+(startpage+10)+">[다음]</a>");
                 }
             %>
         </td>
