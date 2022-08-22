@@ -18,10 +18,11 @@
             PreparedStatement PST; //PST=CN.prepareStatment(sql)
             CallableStatement CS; //CS=CN.callableStatement(sql)
             ResultSet RS; //조회한결과를 RS기억  RS.next( );
-            String uid, pwd, msg, mtitle ;
+            String uid, pwd, msg, mTitle, mActors, mContent ;
+            Boolean isUnkown;
             int Gtotal=0;
             int Mtotal=0;
-            Date Gdate;
+            Date mDate;
         %>
 
         <%

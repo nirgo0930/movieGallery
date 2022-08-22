@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="ssi.jsp" %>
 <%@ include file="top.jsp" %>
 
@@ -14,15 +14,15 @@
                 <form class="row g-3" method="post" enctype="multipart/form-data" action="movieSave.jsp">
                     <div class="col-md-6">
                         <label for="title" class="form-label">제목</label>
-                        <input type="text" class="form-control" id="title">
+                        <input type="text" class="form-control" id="title" name="title">
                     </div>
                     <div class="col-md-6">
                         <label for="openDate" class="form-label">개봉일</label>
-                        <input type="date" class="form-control" id="openDate">
+                        <input type="date" class="form-control" id="openDate" name="openDate">
                     </div>
                     <div class="col-6">
                         <label for="actor" class="form-label">출연 배우</label>
-                        <input type="text" class="form-control" id="actor"
+                        <input type="text" class="form-control" id="actor" name="actor"
                                placeholder="김길동, 홍길동, 우영우 ( ' , ' 로 구분해서 입력)">
                     </div>
                     <div class="col-6">
@@ -31,15 +31,13 @@
                     </div>
                     <div class="col-12">
                         <label for="content" class="form-label">내용 설명</label>
-                        <textarea class="form-control" id="content"
+                        <textarea class="form-control" id="content" name="content"
                                   rows="20" style="overflow: scroll; resize: none"></textarea>
                     </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                익명 게시 여부
-                            </label>
+                            <label class="form-check-label" for="unknown"> 익명 게시 여부 </label>
+                            <input class="form-check-input" type="checkbox" id="unknown" name="unknown" value="isUnknown">
                         </div>
                     </div>
                     <div class="col-12">

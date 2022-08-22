@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="ssi.jsp" %>
 <%@ page import="java.util.Date" %>
 
@@ -22,7 +22,7 @@
         <%--        value="<%=Gcode%>"--%>
         <form name="myform" method="post" action="movieSave.jsp">
             제목: <input type="text" name="title" id="title"> <br>
-            개봉일: <input type="date" name="date" id="pay" placeholder=<%=Gdate%>> <br>
+            개봉일: <input type="date" name="date" id="pay" placeholder=<%=mDate%>> <br>
             익명으로 게시<input type="checkbox" name="unknown" id="unknown">
             <br/>
             <input type="submit" value="서브밋수정">
