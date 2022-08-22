@@ -8,7 +8,13 @@
         <title>Add Movie</title>
     </head>
     <body>
-
+        <%
+            try {
+                session.getAttribute("pass").toString().isEmpty();
+            } catch (Exception e) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="container">
             <div class="border rounded-3" style="padding: 20px">
                 <form class="row g-3" method="post" enctype="multipart/form-data" action="movieSave.jsp">
@@ -51,7 +57,5 @@
                 </form>
             </div>
         </div>
-
-    </body>
     </body>
 </html>

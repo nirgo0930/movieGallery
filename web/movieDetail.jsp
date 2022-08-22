@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="ssi.jsp" %>
+<%@ include file="top.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
         </style>
     </head>
     <body>
-        <p/>
+        <p></p>
         <table width="900" border="1" cellspacing="0" cellpadding="7">
             <tr align="center">
                 <td colspan="2">
@@ -23,19 +24,22 @@
             </tr>
 
             <tr>
-                <td rowspan="5" align="center">
-                    <img src="images/pic6.png" width="500" height="300">
+                <td rowspan="6" align="center">
+                    <img src="images/woo0woo.jpg" width="400" height="500">
                 </td>
             </tr>
 
             <tr>
-                <td> 날짜: (date)</td>
+                <td> 게시일: (date) / 유저: (Uid/익명)</td>
             </tr>
             <tr>
-                <td> 유저: (Uid/익명)</td>
+                <td> 영화제목:</td>
             </tr>
             <tr>
                 <td> 배우: (MainActor)</td>
+            </tr>
+            <tr>
+                <td> 개봉일: (OpenDate)</td>
             </tr>
             <tr>
                 <td> 평점 평균: (AVG)</td>
