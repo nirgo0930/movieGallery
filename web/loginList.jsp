@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"   %>
+<%@ page language="java" contentType="text/html;charset=UTF-8"   %>
 <%@ include file="ssi.jsp" %>
 
 <html>
@@ -10,7 +10,7 @@
     String id = request.getParameter("userID");
     String pwd = request.getParameter("pwd");
     try{
-        msg="select count(*) as cnt from login where userid =? and pwd =? ";
+        msg="select count(*) as cnt from userInfo where userid =? and pwd =? ";
         PST=CN.prepareStatement(msg);
         PST.setString(1, id);
         PST.setString(2, pwd);
