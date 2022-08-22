@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="./top.jsp" %>
 <%@ include file="ssi.jsp" %>
 
 <html>
@@ -7,6 +6,7 @@
     <title>Movie List</title>
 </head>
 <body>
+<%@ include file="./top.jsp" %>
 <%;
     msg = "select count(*) as cnt from movie";
     ST=CN.createStatement();
@@ -37,12 +37,11 @@
 %>
 <table>
     <tr align="center">
-        <td>번호</td><td>사진</td><td>제목</td><td>조회수</td>
+        <th>번호</th><th>사진</th><th>제목</th><th>조회수</th>
     </tr>
     <%
         String a= "select * from ( ";
         String b= "select rownum rn, m.* from movie m";
-        String y= "";
         String c= " ) where rn  between " + rowstart  + " and " + rowend ;
         msg=a+b+c;
 
@@ -52,10 +51,10 @@
 
     %>
     <tr align="center">
-        <td> <%= RS.getInt("rn") %> </td>
-        <td> <img src="<%= RS.getString("poster") %>" /> </td>
-        <td> <%= RS.getString("title") %>   </td>
-        <td> <%= RS.getInt("view") %> </td>
+        <td> <%= RS.getInt("rn")%> </td>
+        <td> <%= RS.getString("poster")%> </td>
+        <td> <%= RS.getString("title")%> </td>
+        <td> <%= RS.getInt("viewcnt")%> </td>
     </tr>
     <% } %>
     <tr align="center">
