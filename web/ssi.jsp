@@ -1,6 +1,6 @@
-
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Date" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,7 @@
             ResultSet RS; //조회한결과를 RS기억  RS.next( );
             String uid, pwd, msg, mtitle ;
             int Gtotal=0;
+            Date Gdate;
         %>
 
         <%
