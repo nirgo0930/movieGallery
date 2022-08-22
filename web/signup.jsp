@@ -1,9 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="./top.jsp" %>
+<%@ include file="./ssi.jsp" %>
+
 
 <html>
 <head>
     <title>Title</title>
+    <script src="./js/InputJS.js"></script>
+
 </head>
 <body>
 <div class="all" align="center">
