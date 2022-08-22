@@ -9,7 +9,7 @@
 <%
     String id=request.getParameter("id");
     System.out.println(id);
-    msg = "select * from login where userid = ?";
+    msg = "select * from userInfo where userid = ?";
     PST=CN.prepareStatement(msg);
     PST.setString(1,id);
     RS = PST.executeQuery();
@@ -28,3 +28,5 @@
 </table>
 </body>
 </html>
+
+

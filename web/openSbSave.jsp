@@ -10,7 +10,7 @@
 <body>
 <%
     String data = request.getParameter("userid");
-    msg="select count(*) as cnt from login where userid="+data;
+    msg="select count(*) as cnt from userInfo where userid="+data;
 
     ST=CN.createStatement();
     RS = ST.executeQuery(msg);
@@ -36,3 +36,4 @@
 
 </body>
 </html>
+
