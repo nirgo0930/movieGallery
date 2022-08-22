@@ -9,14 +9,18 @@
     <meta name="author" content="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>로그인 페이지</title>
+    <style>
+        label{
+            margin-bottom:0;
+        }
+    </style>
 </head>
 
 <body>
 <div class="container">
     <div class="border rounded-3">
-        <table>
             <form action="loginList.jsp" method="post">
-                <div class="col-md-6 offset-md-4">아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.</div>
+                <div align="center">아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.</div>
                 <hr>
                 <div class="row">
                     <div class="col-md-1 offset-md-4">
@@ -41,23 +45,8 @@
                     <button type="submit" class="btn btn-primary col-md-12" id="logIN">로그인</button>
                 </div>
 
-
-
-
-<%--                <tr>--%>
-<%--                    <td>UID:</td>--%>
-<%--                    <td><input type="text" name="userID"></td>--%>
-<%--                    <td rowspan="2">--%>
-<%--                        <input type="submit" value="로그인" id="logIN">--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>PWD:</td>--%>
-<%--                    <td><input type="password" name="pwd"></td>--%>
-<%--                </tr>--%>
             </form>
 
-        </table>
     </div>
 
 
