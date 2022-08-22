@@ -12,9 +12,13 @@
         <div class="container">
             <div class="border rounded-3" style="padding: 20px">
                 <form class="row g-3" method="post" enctype="multipart/form-data" action="movieSave.jsp">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="title" class="form-label">제목</label>
                         <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="title" class="form-label">영화제목</label>
+                        <input type="text" class="form-control" id="mTitle" name="mTitle">
                     </div>
                     <div class="col-md-6">
                         <label for="openDate" class="form-label">개봉일</label>
@@ -34,13 +38,14 @@
                         <textarea class="form-control" id="content" name="content"
                                   rows="20" style="overflow: scroll; resize: none"></textarea>
                     </div>
-                    <div class="col-12">
+                    <div class="col-md-3 offset-md-7">
                         <div class="form-check">
                             <label class="form-check-label" for="unknown"> 익명 게시 여부 </label>
-                            <input class="form-check-input" type="checkbox" id="unknown" name="unknown" value="isUnknown">
+                            <input class="form-check-input" type="checkbox" id="unknown" name="unknown"
+                                   value="isUnknown">
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-md-2">
                         <button type="submit" class="btn btn-primary" value="등록">등록</button>
                     </div>
                 </form>
