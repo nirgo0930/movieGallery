@@ -11,7 +11,7 @@
                 ID : <input type="text"><br/>
                 PW : <input type="password"><br/>
                 <button type="submit">login</button>
-                <button type="submit">Sing Up</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
 
