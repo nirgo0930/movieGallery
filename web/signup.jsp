@@ -12,30 +12,28 @@
                 <br>
                 회원가입
             </div>
-            <form name="iform" method="post" enctype="multipart/form-data" action="./signupSave.jsp">
+            <form name="iform" action="signupSave.jsp" method="post" enctype="multipart/form-data">
                 <table class="table1">
                     <tr>
                         <th>UID</th>
                         <td colspan="2">
-                            <input type="text" size="10" name="uid">
+                            <input type="text" size="10" name="uid" id="uid">
                             <input type="button" value="중복확인" onclick="checkUID()">
                         </td>
                     </tr>
                     <tr>
                         <th>PWD</th>
-                        <td colspan="2"><input type="text" name="pwd"></td>
+                        <td colspan="2"><input type="text" name="pwd" id="pwd"></td>
                     </tr>
                     <tr>
                         <th>성함</th>
-                        <td colspan="2"><input type="text" name="uname"></td>
+                        <td colspan="2"><input type="text" name="uname" id="uname"></td>
                     </tr>
                     <tr>
                         <th>폰번호</th>
-                        <td colspan="2"><input type="text" name="phone"></td>
+                        <td colspan="2"><input type="text" name="phone" id="phone"></td>
                     </tr>
                 </table>
-
-                <p>
                     <input type="submit" value="회원가입">
                     <input type="button" value="취소" onclick="location.href='movieList.jsp'">
             </form>
