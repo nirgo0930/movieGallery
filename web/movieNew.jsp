@@ -2,7 +2,6 @@
 <%@ include file="ssi.jsp" %>
 <%@ include file="top.jsp" %>
 
-
 <html>
     <head>
         <title>Add Movie</title>
@@ -10,9 +9,22 @@
     <body>
         <%
             try {
-                session.getAttribute("pass").toString().isEmpty();
-            } catch (Exception e) {
-                response.sendRedirect("login.jsp");
+                String tempId = session.getAttribute("pass").toString();
+                if (tempId == "") {
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요.");
+            location.href = "login.jsp";
+        </script>
+        <%
+            }
+        } catch (Exception e) {
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요.");
+            location.href = "login.jsp";
+        </script>
+        <%
             }
         %>
         <div class="container">
