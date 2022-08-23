@@ -39,6 +39,7 @@
                 tempCheck = false;
             }
 
+            pId = mr.getParameter("pId");
             pTitle = mr.getParameter("title");
             mTitle = mr.getParameter("mTitle");
             mDate = tempDate;
@@ -46,7 +47,7 @@
             mImage = tempImg;
             mContent = mr.getParameter("content");
             isUnknown = tempCheck;
-            pId = mr.getParameter("pId");
+
             System.out.println("pid : " + pId);
 
             if (pId == null) {

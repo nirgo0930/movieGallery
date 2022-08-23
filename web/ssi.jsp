@@ -18,14 +18,13 @@
             PreparedStatement PST; //PST=CN.prepareStatment(sql)
             CallableStatement CS; //CS=CN.callableStatement(sql)
             ResultSet RS; //조회한결과를 RS기억  RS.next( );
-            String uid, pwd, msg, mTitle, mActors, mContent, mImg, pTitle, pId, mImage, cId, comment;
+
+            String uid, pwd, msg, mTitle, mActors, mContent, mImg, pTitle, pId, mImage, cId, cuId, comment;
             Boolean isUnknown, cIsUnknown;
-            int Gtotal=0, Mtotal=0;
+            int Gtotal = 0, Mtotal = 0, pViewCnt = 0;
             Date mDate, pDate;
             double rate = 0;
         %>
-
-
 
         <%
             try {

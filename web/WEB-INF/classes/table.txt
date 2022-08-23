@@ -1,0 +1,39 @@
+drop table MovieRecommend;
+create table MovieRecommend(
+    Pid number primary key ,
+    title varchar2(50) not null ,
+    Pdate date not null ,
+    userid varchar2(10),
+    foreign key (userid) references userInfo(userid) ,
+    userInfo CHAR(1) ,
+    Mtitle varchar2(10) not null ,
+    MainActor varchar2(40) ,
+    OpenDate date,
+    content varchar2(200) not null,
+    movieImage varchar2(20),
+    viewCnt number default 0
+  );
+
+drop sequence Movie_seq;
+create sequence Movie_seq increment by 1 start with 1;
+
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~', 'Movie1',0) ;
+commit ;
+
+drop table Mcomment;
+  create table Mcomment(
+     Cid number primary key ,
+     Pid number not null,
+     foreign key (Pid) references MovieRecommend(Pid) ,
+     cuId varchar2(10) not null,
+     foreign key (cuId) references userInfo(userid) ,
+     userInfo CHAR(1) ,
+     cContent varchar2(200) not null,
+     rate number not null
+  );
+
+drop sequence Comment_seq;
+create sequence Comment_seq increment by 1 start with 1;
+
+insert into Mcomment values(Movie_seq.NEXTVAL, 1000, 'test', 0, '저도 꼭 봐야겠어요~', 5) ;
+commit;

@@ -9,22 +9,15 @@
     <body>
         <%
             try {
-                session.getAttribute("pass").toString().isEmpty();
-            } catch (Exception e) {
-                response.sendRedirect("login.jsp");
-            }
-
-            try {
-                if (!session.getAttribute("pass").toString().equals(uid)) {
-                    throw new IllegalAccessException("wrong user");
+                String tempId = session.getAttribute("pass").toString();
+                if (tempId == "") {
+                    response.sendRedirect("login.jsp");
+                } else if (tempId != uid) {
+                    response.sendRedirect("movieList.jsp");
                 }
-            } catch (IllegalAccessException e) {
-                System.out.println(e.toString());
-
-                response.sendRedirect("movieList.jsp");
             } catch (Exception e) {
-                System.out.println(e.toString());
                 response.sendRedirect("login.jsp");
+
             }
         %>
 
@@ -37,13 +30,13 @@
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
             if (RS.next() == true) {
                 uid = RS.getString("userid");
+                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
                 pTitle = RS.getString("title");
                 mTitle = RS.getString("Mtitle");
                 mDate = RS.getDate("OpenDate");
                 mActors = RS.getString("MainActor");
-                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
-                mContent = RS.getString("content");
                 mImage = RS.getString("movieImage");
+                mContent = RS.getString("content");
 
                 System.out.println("pdate : " + RS.getDate("Pdate"));
             }

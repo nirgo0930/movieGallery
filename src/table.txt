@@ -1,0 +1,59 @@
+drop table Mcomment;
+drop table MovieRecommend;
+drop talbe userInfo;
+drop sequence Movie_seq;
+drop sequence Comment_seq;
+
+create table userInfo(
+    userid varchar2(10) not null primary key,
+    pwd varchar2(20) not null,
+    phone varchar2(50) not null,
+    name varchar2(10) not null
+);
+
+create table MovieRecommend(
+    Pid number primary key ,
+    title varchar2(50) not null ,
+    Pdate date not null ,
+    userid varchar2(10),
+    foreign key (userid) references userInfo(userid) ,
+    userInfo CHAR(1) ,
+    Mtitle varchar2(10) not null ,
+    MainActor varchar2(40) ,
+    OpenDate date,
+    content varchar2(200) not null,
+    movieImage varchar2(20),
+    viewCnt number default 0
+  );
+
+create table Mcomment(
+    Cid number primary key ,
+    Pid number not null ,
+    foreign key (Pid) references MovieRecommend(Pid) ,
+    cuId varchar2(10) not null ,
+    foreign key (cuId) references userInfo(userid) ,
+    userInfo CHAR(1) ,
+    cContent varchar2(200) not null,
+    rate number not null
+);
+
+create sequence Movie_seq increment by 1 start with 1;
+create sequence Comment_seq increment by 1 start with 1;
+
+insert into UserInfo values('test', '1234', '01012341234', '홍길동');
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다0', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~1', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다1', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~2', 'test.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다2', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~3', 'test1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다3', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~4', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다4', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~5', 'watermark.png',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다5', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~6', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다6', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~7', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다7', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~8', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다8', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~9', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다9', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~0', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다10', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~1', 'Movie1.jpg',0) ;
+insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다11', sysdate, 'test', 0, '우영우', '박은빈', '2022-06-29', '너무 재미있어요~~2', 'Movie1.jpg',0) ;
+insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~1', 5) ;
+insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~2', 5) ;
+insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~3', 5) ;
+commit;
