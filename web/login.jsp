@@ -20,7 +20,7 @@
 <div class="container">
     <div class="border rounded-3">
             <form action="loginList.jsp" method="post">
-                <div align="center">아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.</div>
+                <div align="center">아이디와 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.</div>
                 <hr>
                 <div class="row">
                     <div class="col-md-1 offset-md-4">
