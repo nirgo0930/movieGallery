@@ -58,6 +58,8 @@
                     <a href="movieDetail.jsp?Pid=<%= RS.getString("Pid")%>">
                         <img src="images/<%=RS.getString("movieImage")%>" width="100" height="150">
                     </a>
+                    <br/>
+                    <%=RS.getString("title")%>
                 </div>
 
                 <% } %>
