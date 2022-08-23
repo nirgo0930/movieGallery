@@ -37,13 +37,13 @@
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
             if (RS.next() == true) {
                 uid = RS.getString("userid");
+                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
                 pTitle = RS.getString("title");
                 mTitle = RS.getString("Mtitle");
                 mDate = RS.getDate("OpenDate");
                 mActors = RS.getString("MainActor");
-                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
-                mContent = RS.getString("content");
                 mImage = RS.getString("movieImage");
+                mContent = RS.getString("content");
 
                 System.out.println("pdate : " + RS.getDate("Pdate"));
             }

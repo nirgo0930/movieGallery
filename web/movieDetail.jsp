@@ -28,12 +28,22 @@
                 mTitle = RS.getString("Mtitle");
                 mDate = RS.getDate("OpenDate");
                 mActors = RS.getString("MainActor");
-                isUnkown = RS.getString("userInfo").equals("1") ? true : false;
+                isUnknown = RS.getString("userInfo").equals("1") ? true : false;
                 mContent = RS.getString("content");
                 mImage = RS.getString("movieImage");
                 pDate = RS.getDate("Pdate");
+                pViewCnt = RS.getInt("viewCnt");
             }
+        %>
 
+        <%
+            pViewCnt++;
+            msg = "update MovieRecommend set viewCnt=" + pViewCnt + " where pId=" + pId;
+            ST = CN.createStatement(); //명령어생성
+            RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
+            if (RS.next() == true) {
+                System.out.println("조회수 증가");
+            }
         %>
         <p></p>
         <table width="900" border="1" cellspacing="0" cellpadding="7" align="center">
