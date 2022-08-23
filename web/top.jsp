@@ -14,8 +14,13 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 <div>
+    <div align="center">
+        <img align="center" src="./images/logo2.png" height="300" width="300">
+
+    </div>
     <nav id="topMenu">
         <ul>
+            <li><img src="./images/logo2.png" height="40" width="40"></li>
             <li><a class="menuLink" href="movieList.jsp">메인 페이지</a></li>
             <li><a class="menuLink" href="movieNew.jsp">글 등록</a></li>
             <li><a class="menuLink" href="postList.jsp">포스터 리스트</a></li>
