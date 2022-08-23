@@ -23,7 +23,7 @@
             System.out.println("movieDetail.jsp상세문서 " + msg);
             ST = CN.createStatement(); //명령어생성
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
-            if (RS.next() == true) {
+            if (RS.next()) {
                 uid = RS.getString("userid");
                 pTitle = RS.getString("title");
                 mTitle = RS.getString("Mtitle");
@@ -34,11 +34,11 @@
                 mImage = RS.getString("movieImage");
                 pDate = RS.getDate("Pdate");
                 pViewCnt = RS.getInt("viewCnt");
+            }
 
-                /* cId = RS.getString("Cid");
-                comment = RS.getString("cContent");
-                cuId = RS.getString("cuId");
-                rate = RS.getDouble("rate"); */
+            String tempUID = uid;
+            if (isUnknown) {
+                tempUID = "익명";
             }
         %>
 
@@ -47,7 +47,7 @@
             msg = "UPDATE movieRecommend SET viewCnt =" + pViewCnt + " WHERE pid=" + pId;
             ST = CN.createStatement(); //명령어생성
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
-            if (RS.next() == true) {
+            if (RS.next()) {
                 System.out.println(pId + "조회수 증가");
             }
         %>
@@ -62,12 +62,13 @@
 
             <tr>
                 <td rowspan="6" align="center">
-                    <img src="images/<%=mImage%>.jpg" width="400" height="500">
+                    <img src="images/<%=mImage%>" width="400" height="500">
                 </td>
             </tr>
 
             <tr>
-                <td> 게시일: <%=pDate%> / 유저: <%=uid%> 익명여부 관리 해야함</td>
+                <td> 게시일: <%=pDate%> / 유저: <%=tempUID%>
+                </td>
             </tr>
             <tr>
                 <td> 영화제목: <%=mTitle%>
@@ -82,13 +83,23 @@
                 </td>
             </tr>
             <tr>
-                <td> 평점 평균: (AVG) 계산할것</td>
-            </tr>
+                <%
+                    msg = "SELECT AVG(rate) as avg FROM mComment where Pid=" + pId;
+                    ST = CN.createStatement();
+                    RS = ST.executeQuery(msg);
+                    double avg = 0;
+                    if (RS.next()) {
+                        avg = Math.round(RS.getDouble("avg") * 100) / 100.0;
+                    }
 
+                %>
+                <td> 평점 평균: <%=avg%>
+                </td>
+            </tr>
 
             <tr>
                 <td colspan="2">
-                    <p class="bold">내용</p> <%=mContent%> <!-- <br> 최고의 영화 추천합니다. -->
+                    <p class="bold">내용</p> <%=mContent%>
                 </td>
             </tr>
 
@@ -101,7 +112,7 @@
                         <input type="hidden" name="postId" value=<%=pId%>>
                         <input type="text" name="inputComment" size="55">
                         평점 :
-                        <select className="rate">
+                        <select name="rate">
                             <option key="1" value="1">1</option>
                             <option key="2" value="2">2</option>
                             <option key="3" value="3">3</option>
@@ -117,21 +128,24 @@
 
             <%
                 msg = "select * from Mcomment where Pid = " + pId;
-                System.out.println("movieDetail.jsp상세문서 댓글" + msg);
-                ST = CN.createStatement(); //명령어생성
-                RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
+                ST = CN.createStatement();
+                RS = ST.executeQuery(msg);
                 while (RS.next()) {
                     //pId = RS.getString("Pid");
                     cIsUnknown = RS.getString("userInfo").equals("1") ? true : false;
-
                     comment = RS.getString("cContent");
                     cuId = RS.getString("cuId");
                     rate = RS.getDouble("rate");
+
+                    String tempCUID = cuId;
+                    if (cIsUnknown) {
+                        tempCUID = "익명";
+                    }
             %>
             <tr>
                 <td><%=comment%>
                 </td>
-                <td> 유저 : <%=cuId%> 평점 : <%=rate%>
+                <td> 유저 : <%=tempCUID%> 평점 : <%=rate%>
                 </td>
             </tr>
             <%

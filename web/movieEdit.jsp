@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="ssi.jsp" %>
 <%@ include file="top.jsp" %>
-<%@ include file="checkLogin.jsp" %>
 
 <html>
     <head>
@@ -9,12 +8,28 @@
     </head>
     <body>
         <%
-            String tempId = session.getAttribute("pass").toString();
-            if (tempId != uid) {
+            try {
+                String tempId = session.getAttribute("pass").toString();
+                if (tempId == "") {
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요.");
+            location.href = "login.jsp";
+        </script>
+        <%
+        } else if (tempId != uid) {
         %>
         <script>
             alert("글 작성자만 수정 가능합니다.")
             location.href = "movieList.jsp";
+        </script>
+        <%
+            }
+        } catch (Exception e) {
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요.");
+            location.href = "login.jsp";
         </script>
         <%
             }

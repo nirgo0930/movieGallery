@@ -27,7 +27,7 @@
                 }
             %>
             <%
-                int rowstart = 0, rowend = 0, pageNUM = 1, pagecount = 0, tmp = 0, startpage = 1, endpage = 10;
+                int rowstart = 0, rowend = 0, pageNUM = 1, pagecount = 0, tmp = 0, startpage = 1, endpage = 10, maxContent = 5;
                 String searchQuery, searchKey, searchVal, pnum = "";
 
                 searchKey = request.getParameter("keyfield");
@@ -49,15 +49,15 @@
                     pnum = "1";
                 }
                 pageNUM = Integer.parseInt(pnum);
-                rowstart = (pageNUM - 1) * 10 + 1;
-                rowend = pageNUM * 10;
+                rowstart = (pageNUM - 1) * maxContent + 1;
+                rowend = pageNUM * maxContent;
 
-                if (Mtotal % 10 == 0) {
-                    pagecount = (Mtotal / 10);
+                if (Mtotal % maxContent == 0) {
+                    pagecount = (Mtotal / maxContent);
                 } else {
-                    pagecount = (Mtotal / 10) + 1;
+                    pagecount = (Mtotal / maxContent) + 1;
                 }
-                tmp = (pageNUM - 1) % 10;
+                tmp = (pageNUM - 1) % maxContent;
                 startpage = (pageNUM - tmp);
                 endpage = (startpage + 9);
                 if (endpage > pagecount) {

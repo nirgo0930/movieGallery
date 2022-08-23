@@ -8,7 +8,7 @@
 
 <html>
     <head>
-        <title>test</title>
+        <title></title>
     </head>
     <body>
         <%
