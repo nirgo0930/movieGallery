@@ -55,7 +55,7 @@
                 %>
 
                 <div class="col-md-3">
-                    <a href="movieDetail.jsp?Pid=<%= RS.getString("Pid")%>">
+                    <a href="postImgDownload.jsp?Pid=<%= RS.getString("Pid")%>&src=<%=RS.getString("movieImage")%>">
                         <img src="images/<%=RS.getString("movieImage")%>" width="100" height="150">
                     </a>
                     <br/>
