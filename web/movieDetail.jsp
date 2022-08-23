@@ -62,7 +62,7 @@
 
             <tr>
                 <td rowspan="6" align="center">
-                    <img src="images/<%=mImage%>" width="400" height="500">
+                    <img src="images/<%=mImage%>.jpg" width="400" height="500">
                 </td>
             </tr>
 
@@ -97,27 +97,31 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="text" id="inputComment" size="50">
-                    평점 :
-                    <select className="rate">
-                        <option key="1" value="1">1</option>
-                        <option key="2" value="2">2</option>
-                        <option key="3" value="3">3</option>
-                        <option key="4" value="4">4</option>
-                        <option key="5" value="5">5</option>
-                    </select>
-                    <input type="submit" value="댓글 등록">
+                    <form method="post" action="commentSave.jsp">
+                        <input type="hidden" name="postId" value=<%=pId%>>
+                        <input type="text" name="inputComment" size="55">
+                        평점 :
+                        <select className="rate">
+                            <option key="1" value="1">1</option>
+                            <option key="2" value="2">2</option>
+                            <option key="3" value="3">3</option>
+                            <option key="4" value="4">4</option>
+                            <option key="5" value="5">5</option>
+                        </select>
+                        익명 :
+                        <input type="checkbox" name="cIsUnknownCheck">
+                        <input type="submit" value="댓글 등록" }>
+                    </form>
                 </td>
             </tr>
 
             <%
-                //movieDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
                 msg = "select * from Mcomment where Pid = " + pId;
                 System.out.println("movieDetail.jsp상세문서 댓글" + msg);
                 ST = CN.createStatement(); //명령어생성
                 RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
                 while (RS.next()) {
-                    pId = RS.getString("Pid");
+                    //pId = RS.getString("Pid");
                     cIsUnknown = RS.getString("userInfo").equals("1") ? true : false;
 
                     comment = RS.getString("cContent");
@@ -137,10 +141,11 @@
             <tr align="center">
                 <td colspan="2">
                     <a href="movieEdit.jsp?Pid=<%=pId%>">[수정]</a>
-                    <a href="movieDeleteSave.jsp">[삭제]</a>
+                    <a href="movieDeleteSave.jsp?Pid=<%=pId%>">[삭제]</a>
                     <a href="movieList.jsp">[목록]</a>
                 </td>
             </tr>
         </table>
+        <p></p>
     </body>
 </html>
