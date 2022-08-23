@@ -12,12 +12,13 @@
                 <br>
                 회원가입
             </div>
-            <form name="iform" action="signupSave.jsp" method="post" enctype="multipart/form-data">
+            <form name="iform" action="signupSave.jsp" method="post">
                 <table class="table1">
                     <tr>
                         <th>UID</th>
                         <td colspan="2">
                             <input type="text" size="10" name="uid" id="uid">
+                            <input type="hidden" name="overlap" id="overlap" value="false">
                             <input type="button" value="중복확인" onclick="checkUID()">
                         </td>
                     </tr>

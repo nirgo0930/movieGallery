@@ -31,6 +31,7 @@
     alert('<%=data%>는 사용가능합니다.');
     self.close();
     opener.iform.uid.value="<%=data%>";
+    opener.iform.overlap.value="true";
 </script>
 <%}%>
 
