@@ -1,20 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="./top.jsp" %>
 <%@ include file="./ssi.jsp" %>
-
-
 <html>
     <head>
         <title>Title</title>
         <script src="./js/InputJS.js"></script>
-
     </head>
     <body>
         <div class="all" align="center">
             <div class="title">
                 <br>
                 회원가입
-
             </div>
             <form name="iform" method="post" enctype="multipart/form-data" action="./signupSave.jsp">
                 <table class="table1">
@@ -28,6 +24,14 @@
                     <tr>
                         <th>PWD</th>
                         <td colspan="2"><input type="text" name="pwd"></td>
+                    </tr>
+                    <tr>
+                        <th>성함</th>
+                        <td colspan="2"><input type="text" name="uname"></td>
+                    </tr>
+                    <tr>
+                        <th>폰번호</th>
+                        <td colspan="2"><input type="text" name="phone"></td>
                     </tr>
                 </table>
 
