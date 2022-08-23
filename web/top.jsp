@@ -18,7 +18,7 @@
         <ul>
             <li><a class="menuLink" href="movieList.jsp">메인 페이지</a></li>
             <li><a class="menuLink" href="movieNew.jsp">글 등록</a></li>
-            <li><a class="menuLink" href="">포스터 리스트</a></li>
+            <li><a class="menuLink" href="postList.jsp">포스터 리스트</a></li>
             <li><a class="menuLink" href="signup.jsp">회원 가입</a></li>
 
             <%

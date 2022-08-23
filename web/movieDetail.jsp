@@ -15,8 +15,9 @@
         </style>
     </head>
     <body>
+
         <%
-            //testDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
+            //movieDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
             pId = request.getParameter("Pid");
             msg = "select * from MovieRecommend where Pid = " + pId;
             System.out.println("movieDetail.jsp상세문서 " + msg);
@@ -33,18 +34,24 @@
                 mImage = RS.getString("movieImage");
                 pDate = RS.getDate("Pdate");
                 pViewCnt = RS.getInt("viewCnt");
+
+                /* cId = RS.getString("Cid");
+                comment = RS.getString("cContent");
+                cuId = RS.getString("cuId");
+                rate = RS.getDouble("rate"); */
             }
         %>
 
         <%
             pViewCnt++;
-            msg = "update MovieRecommend set viewCnt=" + pViewCnt + " where pId=" + pId;
+            msg = "UPDATE movieRecommend SET viewCnt =" + pViewCnt + " WHERE pid=" + pId;
             ST = CN.createStatement(); //명령어생성
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
             if (RS.next() == true) {
-                System.out.println("조회수 증가");
+                System.out.println(pId + "조회수 증가");
             }
         %>
+
         <p></p>
         <table width="900" border="1" cellspacing="0" cellpadding="7" align="center">
             <tr align="center">
@@ -55,7 +62,7 @@
 
             <tr>
                 <td rowspan="6" align="center">
-                    <img src="images/<%=mImage%>.jpg" width="400" height="500">
+                    <img src="images/<%=mImage%>" width="400" height="500">
                 </td>
             </tr>
 
@@ -89,9 +96,44 @@
                 <td colspan="2"><p class="bold"> 댓글 </p></td>
             </tr>
             <tr>
-                <td> (comment) 저도 꼭 봐야겠어요~</td>
-                <td> (날짜 2022~~) (유저id/익명) (평점 1~5)</td>
+                <td colspan="2">
+                    <input type="text" id="inputComment" size="50">
+                    평점 :
+                    <select className="rate">
+                        <option key="1" value="1">1</option>
+                        <option key="2" value="2">2</option>
+                        <option key="3" value="3">3</option>
+                        <option key="4" value="4">4</option>
+                        <option key="5" value="5">5</option>
+                    </select>
+                    <input type="submit" value="댓글 등록">
+                </td>
             </tr>
+
+            <%
+                //movieDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
+                msg = "select * from Mcomment where Pid = " + pId;
+                System.out.println("movieDetail.jsp상세문서 댓글" + msg);
+                ST = CN.createStatement(); //명령어생성
+                RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
+                while (RS.next()) {
+                    pId = RS.getString("Pid");
+                    cIsUnknown = RS.getString("userInfo").equals("1") ? true : false;
+
+                    comment = RS.getString("cContent");
+                    cuId = RS.getString("cuId");
+                    rate = RS.getDouble("rate");
+            %>
+            <tr>
+                <td><%=comment%>
+                </td>
+                <td> 유저 : <%=cuId%> 평점 : <%=rate%>
+                </td>
+            </tr>
+            <%
+                }
+            %>
+
             <tr align="center">
                 <td colspan="2">
                     <a href="movieEdit.jsp?Pid=<%=pId%>">[수정]</a>

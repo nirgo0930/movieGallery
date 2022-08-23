@@ -90,7 +90,7 @@
                         <td><%= RS.getInt("rn")%>
                         </td>
                         <td>
-                            <img src="images/<%=RS.getString("movieImage")%>.jpg" width="100" height="150">
+                            <img src="images/<%=RS.getString("movieImage")%>" width="100" height="150">
                         </td>
                         <td>
                             <a href="movieDetail.jsp?Pid=<%= RS.getString("Pid")%>">
