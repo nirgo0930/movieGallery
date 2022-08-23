@@ -89,7 +89,7 @@
                     RS = ST.executeQuery(msg);
                     double avg = 0;
                     if (RS.next()) {
-                        avg = RS.getDouble("avg");
+                        avg = Math.round(RS.getDouble("avg") * 100) / 100.0;
                     }
 
                 %>
