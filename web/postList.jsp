@@ -18,7 +18,7 @@
             %>
 
             <%
-                int rowstart = 0, rowend = 0, pageNUM = 1, pagecount = 0, tmp = 0, startpage = 1, endpage = 12;
+                int rowstart = 0, rowend = 0, pageNUM = 1, pagecount = 0, tmp = 0, startpage = 1, endpage = 10, maxContent = 12;
                 String pnum = "";
 
                 pnum = request.getParameter("pageNum");
@@ -26,15 +26,15 @@
                     pnum = "1";
                 }
                 pageNUM = Integer.parseInt(pnum);
-                rowstart = (pageNUM - 1) * 12 + 1;
-                rowend = pageNUM * 12;
+                rowstart = (pageNUM - 1) * maxContent + 1;
+                rowend = pageNUM * maxContent;
 
-                if (Mtotal % 12 == 0) {
-                    pagecount = (Mtotal / 12);
+                if (Mtotal % maxContent == 0) {
+                    pagecount = (Mtotal / maxContent);
                 } else {
-                    pagecount = (Mtotal / 12) + 1;
+                    pagecount = (Mtotal / maxContent) + 1;
                 }
-                tmp = (pageNUM - 1) % 12;
+                tmp = (pageNUM - 1) % maxContent;
                 startpage = (pageNUM - tmp);
                 endpage = (startpage + 9);
                 if (endpage > pagecount) {
