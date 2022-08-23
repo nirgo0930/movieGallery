@@ -83,21 +83,36 @@
 
                         ST = CN.createStatement();
                         RS = ST.executeQuery(msg);
-                        while (RS.next() == true) {
+                        while (RS.next()) {
 
+                            int tempNum = RS.getInt("rn");
+                            String tempImg = RS.getString("movieImage");
+                            String tempPId = RS.getString("Pid");
+                            String tempTitle = RS.getString("title");
+                            int tempCnt = RS.getInt("viewcnt");
+                            int tempComCnt = 0;
                     %>
                     <tr>
-                        <td><%= RS.getInt("rn")%>
+                        <td><%= tempNum%>
                         </td>
                         <td>
-                            <img src="images/<%=RS.getString("movieImage")%>" width="100" height="150">
+                            <img src="images/<%= tempImg%>" width="100" height="150">
                         </td>
                         <td>
-                            <a href="movieDetail.jsp?Pid=<%= RS.getString("Pid")%>">
-                                <%= RS.getString("title")%>
+                            <a href="movieDetail.jsp?Pid=<%=tempPId %>">
+                                <%
+                                    msg = "select count(*) as cnt from Mcomment where Pid = " + tempPId;
+
+                                    ST = CN.createStatement();
+                                    ResultSet tempRS = ST.executeQuery(msg);
+                                    if (tempRS.next()) {
+                                        tempComCnt = tempRS.getInt("cnt");
+                                    }
+                                %>
+                                <%=tempTitle%> (<%=tempComCnt%>)
                             </a>
                         </td>
-                        <td><%= RS.getInt("viewcnt")%>
+                        <td><%= tempCnt%>
                         </td>
                     </tr>
                     <% } %>
