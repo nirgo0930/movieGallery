@@ -59,7 +59,7 @@
                         <img src="images/<%=RS.getString("movieImage")%>" width="100" height="150">
                     </a>
                     <br/>
-                    <%=RS.getString("title")%>
+                    <%=RS.getString("Mtitle")%>
                 </div>
 
                 <% } %>

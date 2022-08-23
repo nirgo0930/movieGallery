@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="ssi.jsp" %>
 <%@ include file="top.jsp" %>
+<%@ include file="checkLogin.jsp" %>
 
 <html>
     <head>
@@ -8,16 +9,14 @@
     </head>
     <body>
         <%
-            try {
-                String tempId = session.getAttribute("pass").toString();
-                if (tempId == "") {
-                    response.sendRedirect("login.jsp");
-                } else if (tempId != uid) {
-                    response.sendRedirect("movieList.jsp");
-                }
-            } catch (Exception e) {
-                response.sendRedirect("login.jsp");
-
+            String tempId = session.getAttribute("pass").toString();
+            if (tempId != uid) {
+        %>
+        <script>
+            alert("글 작성자만 수정 가능합니다.")
+            location.href = "movieList.jsp";
+        </script>
+        <%
             }
         %>
 
@@ -79,7 +78,7 @@
                             <label class="form-check-label" for="unknown"> 익명 게시 여부 </label>
                             <input class="form-check-input" type="checkbox" id="unknown" name="unknown"
                                    value="isUnknown"
-                                <% if(isUnknown){%>
+                                <% if (isUnknown) {%>
                                    checked
                                 <%}%>
                             >

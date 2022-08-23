@@ -27,11 +27,11 @@
 <p>
 <div align="center">
   <form name="subform" action="openSbSave.jsp">
-    <div class="input-group mb-3" style="width: 90%">
+    <div name="subformdiv" class="input-group mb-3" style="width: 90%">
       <span class="input-group-text">ID</span>
-      <input class="form-control" style="width: 40%"  type="text" name="userid">
+      <input class="form-control" style="width: 40%" type="text" name="userid">
       <input type="hidden" name="overlap" value="">
-      <button class="btn btn-primary"  type="submit" value="중복확인">중복확인</button>
+      <button class="btn btn-primary" type="submit">중복확인</button>
     </div>
   </form>
 
