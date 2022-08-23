@@ -9,22 +9,15 @@
     <body>
         <%
             try {
-                session.getAttribute("pass").toString().isEmpty();
-            } catch (Exception e) {
-                response.sendRedirect("login.jsp");
-            }
-
-            try {
-                if (!session.getAttribute("pass").toString().equals(uid)) {
-                    throw new IllegalAccessException("wrong user");
+                String tempId = session.getAttribute("pass").toString();
+                if (tempId == "") {
+                    response.sendRedirect("login.jsp");
+                } else if (tempId != uid) {
+                    response.sendRedirect("movieList.jsp");
                 }
-            } catch (IllegalAccessException e) {
-                System.out.println(e.toString());
-
-                response.sendRedirect("movieList.jsp");
             } catch (Exception e) {
-                System.out.println(e.toString());
                 response.sendRedirect("login.jsp");
+
             }
         %>
 
