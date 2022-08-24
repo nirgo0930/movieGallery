@@ -42,6 +42,7 @@
             }
         %>
 
+
         <%
             pViewCnt++;
             msg = "UPDATE movieRecommend SET viewCnt =" + pViewCnt + " WHERE pid=" + pId;
@@ -151,12 +152,19 @@
             <%
                 }
             %>
-
+            <form name="myEdit" action="movieEdit.jsp?Pid=<%=pId%>" method="POST">
+                <input type="hidden" name="isWriter"
+                       value=<%=(uid.equals((String) session.getAttribute("pass"))) ? true : false %>>
+            </form>
+            <form name="myDelete" action="movieDeleteSave.jsp?Pid=<%=pId%>" method="POST">
+                <input type="hidden" name="isWriter"
+                       value=<%=(uid.equals((String) session.getAttribute("pass"))) ? true : false %>>
+            </form>
             <tr align="center">
                 <td colspan="2">
-                    <a href="movieEdit.jsp?Pid=<%=pId%>">[수정]</a>
-                    <a href="movieDeleteSave.jsp?Pid=<%=pId%>">[삭제]</a>
-                    <a href="movieList.jsp">[목록]</a>
+                    <a href="#" onclick="javascript:document.myEdit.submit()">[수정]</a>
+                    <a href="#" onclick="javascript:document.myDelete.submit()">[삭제]</a>
+                    <a href=" movieList.jsp">[목록]</a>
                 </td>
             </tr>
         </table>

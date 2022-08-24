@@ -10,6 +10,35 @@
         </style>
     </head>
     <body>
+        <%
+            try {
+                String tempId = (String) session.getAttribute("pass");
+                if (tempId == "") {
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요.");
+            location.href = "login.jsp";
+        </script>
+        <%
+        } else if (request.getParameter("isWriter").equals(false)) {
+            System.out.println(tempId + "/" + request.getParameter("isWriter"));
+        %>
+        <script>
+            alert("글 작성자만 수정 가능합니다.")
+            location.href = "movieList.jsp";
+        </script>
+        <%
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        %>
+        <script>
+            alert("로그인 이후 사용해 주세요2.");
+            location.href = "login.jsp";
+        </script>
+        <%
+            }
+        %>
 
         <%
             pId = request.getParameter("Pid");

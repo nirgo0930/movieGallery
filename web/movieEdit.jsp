@@ -9,7 +9,7 @@
     <body>
         <%
             try {
-                String tempId = session.getAttribute("pass").toString();
+                String tempId = (String) session.getAttribute("pass");
                 if (tempId == "") {
         %>
         <script>
@@ -17,7 +17,8 @@
             location.href = "login.jsp";
         </script>
         <%
-        } else if (tempId != uid) {
+        } else if (request.getParameter("isWriter").equals(false)) {
+            System.out.println(tempId + "/" + request.getParameter("isWriter"));
         %>
         <script>
             alert("글 작성자만 수정 가능합니다.")
@@ -26,9 +27,10 @@
         <%
             }
         } catch (Exception e) {
+            System.out.println(e);
         %>
         <script>
-            alert("로그인 이후 사용해 주세요.");
+            alert("로그인 이후 사용해 주세요2.");
             location.href = "login.jsp";
         </script>
         <%

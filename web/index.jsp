@@ -5,15 +5,9 @@
     </head>
     <body>
         <h1>영화 추천 게시판</h1>
-        <div class="container">
-
-            <form action="post">
-                ID : <input type="text"><br/>
-                PW : <input type="password"><br/>
-                <button type="submit">login</button>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
+        <%
+            response.sendRedirect("movieList.jsp");
+        %>
 
     </body>
 </html>

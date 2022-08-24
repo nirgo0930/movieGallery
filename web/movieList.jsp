@@ -57,7 +57,7 @@
                 } else {
                     pagecount = (Mtotal / maxContent) + 1;
                 }
-                tmp = (pageNUM - 1) % maxContent;
+                tmp = (pageNUM - 1) % 10;
                 startpage = (pageNUM - tmp);
                 endpage = (startpage + 9);
                 if (endpage > pagecount) {
