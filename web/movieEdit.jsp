@@ -10,7 +10,9 @@
         <%
             try {
                 String tempId = (String) session.getAttribute("pass");
-                if (tempId == "") {
+                System.out.println(tempId + "/" + request.getParameter("isWriter"));
+
+                if (tempId == "" || tempId == null) {
         %>
         <script>
             alert("로그인 이후 사용해 주세요.");
@@ -18,7 +20,6 @@
         </script>
         <%
         } else if (request.getParameter("isWriter").equals(false)) {
-            System.out.println(tempId + "/" + request.getParameter("isWriter"));
         %>
         <script>
             alert("글 작성자만 수정 가능합니다.")
@@ -30,8 +31,8 @@
             System.out.println(e);
         %>
         <script>
-            alert("로그인 이후 사용해 주세요2.");
-            location.href = "login.jsp";
+            alert("Error");
+            location.href = "movieList.jsp";
         </script>
         <%
             }
@@ -41,7 +42,7 @@
             //testDetail.jsp 한건상세는 조건 code값으로 조회, 단독실행하면안됨
             pId = request.getParameter("Pid");
             msg = "select * from MovieRecommend where Pid = " + pId;
-            System.out.println("movieEdit.jsp상세문서 " + msg);
+            System.out.println("movieEdit.jsp 상세문서 " + msg);
             ST = CN.createStatement(); //명령어생성
             RS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
             if (RS.next() == true) {
@@ -53,8 +54,6 @@
                 mActors = RS.getString("MainActor");
                 mImage = RS.getString("movieImage");
                 mContent = RS.getString("content");
-
-                System.out.println("pdate : " + RS.getDate("Pdate"));
             }
 
         %>
@@ -64,21 +63,21 @@
                     <input type="text" hidden id="pId" name="pId" value="<%=pId%>">
                     <div class="col-md-12">
                         <label for="title" class="form-label">제목</label>
-                        <input type="text" class="form-control" id="title" name="title" value=<%=pTitle%>>
+                        <input type="text" class="form-control" id="title" name="title" value="<%=pTitle%>">
                     </div>
                     <div class="col-md-6">
                         <label for="mTitle" class="form-label">영화제목</label>
-                        <input type="text" class="form-control" id="mTitle" name="mTitle" value=<%=mTitle%>>
+                        <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=mTitle%>">
                     </div>
                     <div class="col-md-6">
                         <label for="openDate" class="form-label">개봉일</label>
-                        <input type="date" class="form-control" id="openDate" name="openDate" value=<%=mDate%>>
+                        <input type="date" class="form-control" id="openDate" name="openDate" value="<%=mDate%>">
                     </div>
                     <div class="col-6">
                         <label for="actor" class="form-label">출연 배우</label>
                         <input type="text" class="form-control" id="actor" name="actor"
                                placeholder="김길동, 홍길동 ( ' , ' 로 구분해서 입력)"
-                               value=<%=mActors%>>
+                               value="<%=mActors%>">
                     </div>
                     <div class="col-6">
                         <label for="mImg" class="form-label">대표 이미지</label>

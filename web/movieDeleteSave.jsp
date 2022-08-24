@@ -13,7 +13,9 @@
         <%
             try {
                 String tempId = (String) session.getAttribute("pass");
-                if (tempId == "") {
+                System.out.println(tempId + "/" + request.getParameter("isWriter"));
+
+                if (tempId == "" || tempId == null) {
         %>
         <script>
             alert("로그인 이후 사용해 주세요.");
@@ -21,7 +23,6 @@
         </script>
         <%
         } else if (request.getParameter("isWriter").equals(false)) {
-            System.out.println(tempId + "/" + request.getParameter("isWriter"));
         %>
         <script>
             alert("글 작성자만 수정 가능합니다.")
@@ -33,8 +34,8 @@
             System.out.println(e);
         %>
         <script>
-            alert("로그인 이후 사용해 주세요2.");
-            location.href = "login.jsp";
+            alert("Error");
+            location.href = "movieList.jsp";
         </script>
         <%
             }

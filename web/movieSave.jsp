@@ -73,7 +73,11 @@
                 }
             } else {
                 System.out.println("edit");
-                msg = "update MovieRecommend set pDate=sysdate, title=?, userInfo=?, mTitle=?, mainActor=?,openDate=?,content=?,movieImage=? where Pid=" + pId;
+                if (mImage.isEmpty()) {
+                    msg = "update MovieRecommend set pDate=sysdate, title=?, userInfo=?, mTitle=?, mainActor=?,openDate=?,content=? where Pid=" + pId;
+                } else {
+                    msg = "update MovieRecommend set pDate=sysdate, title=?, userInfo=?, mTitle=?, mainActor=?,openDate=?,content=?,movieImage=? where Pid=" + pId;
+                }
                 try {
                     PST = CN.prepareStatement(msg);
                     PST.setString(1, pTitle);
@@ -82,7 +86,7 @@
                     PST.setString(4, mActors);
                     PST.setDate(5, mDate);
                     PST.setString(6, mContent);
-                    PST.setString(7, mImage);
+                    if (!mImage.isEmpty()) PST.setString(7, mImage);
 
                     PST.executeUpdate(); // PST.executeUpdate(msg기술하면에러발생);괄호안에 인자 없습니다
                     response.sendRedirect("movieList.jsp");

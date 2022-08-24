@@ -159,6 +159,9 @@
             <form name="myDelete" action="movieDeleteSave.jsp?Pid=<%=pId%>" method="POST">
                 <input type="hidden" name="isWriter"
                        value=<%=(uid.equals((String) session.getAttribute("pass"))) ? true : false %>>
+                <%
+                    System.out.println((uid.equals((String) session.getAttribute("pass"))) ? true : false);
+                %>
             </form>
             <tr align="center">
                 <td colspan="2">
