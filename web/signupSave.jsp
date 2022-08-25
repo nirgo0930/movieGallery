@@ -9,7 +9,6 @@
 
 <%
   String overlap = request.getParameter("overlap");
-  System.out.println(overlap);
   if(overlap.equals("true")){
     String id = request.getParameter("uid");
     String pwd = request.getParameter("pwd");

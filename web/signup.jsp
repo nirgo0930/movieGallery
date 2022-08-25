@@ -5,6 +5,49 @@
     <head>
         <title>Title</title>
         <script src="./js/InputJS.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            let req=false;
+
+            init=function(){
+                try{
+                    req=new XMLHttpRequest();
+                }catch(e){
+                    try{
+                        req=new ActiveXObject("Msxml2.XMLHTTP");
+                    }catch(e2){
+                        req=false;
+                    }
+                }
+                if(!req) alert("req객체 생성 실패");
+            }
+
+            getUserId=function(){
+                let val=$('#uid').val();
+                let url="signupCheck.jsp?userid="+val;
+                req.open("GET",url, true);
+
+                req.onreadystatechange=updatePage;
+                req.send(null);
+            }
+
+            updatePage=function(){
+                if(req.readyState==4 && req.status==200){
+                    let res=req.responseText;
+                    let temp=res.split("|");
+                    if(temp[1]=='true'){
+                        $('#noUseId').hide(1000);
+                        $('#canUseId').show(1000);
+                        $('#overlap').val('true');
+                    }
+                    else{
+                        $('#canUseId').hide(1000);
+                        $('#noUseId').show(1000);
+                    }
+                }
+            }
+            window.onload=init;
+        </script>
     </head>
     <body>
         <div class="all" align="center">
@@ -12,14 +55,19 @@
                 <div class="card-body">
                     <h1 class="display-6">회원가입</h1>
                 </div>
-
             <form name="iform" action="signupSave.jsp" method="post">
                 <div class="mb-3 mt-3">
                     <div class="input-group mb-3" style="width: 90%">
                         <span class="input-group-text col-3">ID</span>
                         <input class="form-control col-7" style="width: 40%" type="text" size="10" name="uid" id="uid" placeholder="ID 입력">
-                        <button class="btn btn-primary col-2" onclick="checkUID()">중복확인</button>
-                        <input type="hidden" name="overlap" id="overlap" value="false">
+                        <button class="btn btn-primary col-2" type="button" onclick="getUserId()">중복확인</button>
+                        <input type="hidden" name="overlap" id="overlap" value="false" />
+                        <div class="container" id="canUseId" style="display: none">
+                            <mark style="color: blue">사용 가능한 ID</mark>
+                        </div>
+                        <div class="container" id="noUseId" style="display: none">
+                            <mark style="color: red">사용 불가능한 ID</mark>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3 mt-3">
