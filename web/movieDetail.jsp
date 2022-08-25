@@ -13,6 +13,44 @@
                 font-weight: bold;
             }
         </style>
+        <script type="text/javascript">
+            var req = false; //XMLHttpRequest객체 필요
+
+            init = function () {
+                try {
+                    req = new XMLHttpRequest();
+                } catch (e) {
+                    try {
+                        req = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e2) {
+                        req = false;
+                    }//catch
+                }//catch
+                if (!req) alert("req객체 생성 실패");
+            }//init-------------------
+
+            function getLikeCntInfo() {
+                var url = "likeResult.jsp?pId=<%=request.getParameter("Pid")%>";
+
+                //2. 서버에 전화번호를 가지고 요청을 보내자.
+                req.open("GET", url, true);
+                req.onreadystatechange = updatePage;
+                req.send(null);
+            }//getUserInfo---------------
+
+            function updatePage() {
+                if (req.readyState == 4 && req.status == 200) {
+                    //응답 성공이 왔다면
+                    var res = req.responseText;
+                    var data = res.split("|");
+                    var lCnt = data[0];
+
+                    document.getElementById("likeTD").innerHTML = "좋아요 : " + lCnt;
+                }
+            } //updatePage---------------
+
+            window.onload = init;
+        </script>
     </head>
     <body>
 
@@ -34,6 +72,7 @@
                 mImage = RS.getString("movieImage");
                 pDate = RS.getDate("Pdate");
                 pViewCnt = RS.getInt("viewCnt");
+                likeCnt = RS.getInt("likeCnt");
             }
 
             String tempUID = uid;
@@ -62,7 +101,7 @@
             </tr>
 
             <tr>
-                <td rowspan="6" align="center">
+                <td rowspan="7" align="center">
                     <img src="images/<%=mImage%>" width="400" height="500">
                 </td>
             </tr>
@@ -95,6 +134,16 @@
 
                 %>
                 <td> 평점 평균: <%=avg%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="likeTD">
+                        좋아요 : <%=likeCnt%>
+                    </div>
+                </td>
+                <td>
+                    <input type="button" onclick="getLikeCntInfo();" value="♡">
                 </td>
             </tr>
 
