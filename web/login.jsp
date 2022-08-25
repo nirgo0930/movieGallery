@@ -27,16 +27,8 @@
                     "url"  : "loginList.jsp" ,
                     "type" : "get",  //document.getElementById("userid").value;
                     "data" : {UID: $('#userID').val(), UPWD: $('#pwd').val( )} ,
-                    // "beforeSend": function( ){
-                    //     $('#loading-mask').show();
-                    //     $('#msgIN').empty();
-                    //     $('#loading-mask').html("<div align=center><img src='./images/ajax-loader.gif' width=500 height=250></div> ");
-                    //     $("#loading-mask").css("opacity","0.9").stop().animate({opacity:3},9000);
-                    // },
                     "success": function(data){
                         setTimeout(function() {
-                            //$('#loading-mask').fadeOut( );
-                            //$('#msgIN').empty();
                             $('#container').html(data);
                         }, 300);
                     },
