@@ -11,6 +11,7 @@
 <%
     String id = request.getParameter("UID");
     String pwd = request.getParameter("UPWD");
+    Gtotal=0;
     try{
         msg="select name, count(*) as cnt from userInfo where userid =? and pwd =? group by name";
         PST=CN.prepareStatement(msg);
@@ -57,6 +58,7 @@
 
         session.setAttribute("", id);
         session.removeAttribute("pass");
+        session.removeAttribute("name");
         writer.flush();
 
 
