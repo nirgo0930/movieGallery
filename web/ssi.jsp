@@ -22,7 +22,7 @@
             String uid, pwd, msg, mTitle, mActors, mContent, mImg, pTitle, pId, mImage, cId, cuId, comment;
             String name;
             Boolean isUnknown, cIsUnknown;
-            int Gtotal = 0, Mtotal = 0, pViewCnt = 0;
+            int Gtotal = 0, Mtotal = 0, pViewCnt = 0, likeCnt;
             Date mDate, pDate;
             double rate = 0;
         %>
