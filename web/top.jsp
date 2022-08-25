@@ -28,6 +28,7 @@
 
             <%
                 String user = (String) session.getAttribute("pass");
+                String name = (String) session.getAttribute("name");
 
                 //로그아웃 되어있을 때
                 if (user == null || user == "") {
@@ -40,7 +41,7 @@
             %>
             <li><a class="menuLink" href="myInfo.jsp?id=<%=user%>">내 정보</a></li>
 
-            <li style="float:right"><%= user %>님 반갑습니다.</li>
+            <li style="float:right"><%= name %>님 반갑습니다.</li>
             <li style="float:right"><a class='menuLink' href="logout.jsp">logout</a></li>
             <% } %>
         </ul>
