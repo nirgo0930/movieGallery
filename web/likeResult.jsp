@@ -14,19 +14,25 @@
     int cnt = 0;
     while (RS.next()) {
         cnt = RS.getInt("cnt");
-
         System.out.println("좋아요 cnt : " + cnt);
         try {
             String tempId = (String) session.getAttribute("pass");
             System.out.println("cUser = " + tempId);
+
             if (!(tempId == "" || tempId == null)) {
-                msg = "UPDATE movieRecommend SET likeCnt =" + ++cnt + " WHERE pid=" + pId;
+                msg = "insert into likeOX values(" + pId + ", '" + tempId + "')";
+                System.out.println(msg);
                 ST = CN.createStatement(); //명령어생성
-                ResultSet TRS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
+                ResultSet TRS = ST.executeQuery(msg);
                 if (TRS.next()) {
-                    System.out.println(pId + " 좋아요 " + cnt + "증가");
+                    msg = "UPDATE movieRecommend SET likeCnt =" + ++cnt + " WHERE pid=" + pId;
+                    ST = CN.createStatement(); //명령어생성
+                    TRS = ST.executeQuery(msg); //생성된명령 ST에 쿼리문을 실행해서 결과를 RS기억해요
+                    if (TRS.next()) {
+                        System.out.println(pId + " 좋아요 " + cnt + "증가");
+                    }
                 }
-            }else{
+            } else {
 
             }
         } catch (Exception e) {

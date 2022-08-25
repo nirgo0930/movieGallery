@@ -43,8 +43,8 @@ create table likeOX(
     Pid number not null ,
     foreign key (Pid) references MovieRecommend(Pid) ,
     userid varchar2(10) not null ,
-    foreign key (userid) references userInfo(userid) ,
-    likeox char(1)
+    foreign key (userid) references userInfo(userid),
+    CONSTRAINT PK_Like PRIMARY KEY(Pid, userid)
 );
 
 create sequence Movie_seq increment by 1 start with 1;
@@ -66,5 +66,5 @@ insert into MovieRecommend values(Movie_seq.NEXTVAL, '우영우 추천합니다1
 insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~1', 5) ;
 insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~2', 5) ;
 insert into Mcomment values(Comment_seq.NEXTVAL, 1, 'test', 0, '저도 꼭 봐야겠어요~3', 5) ;
-insert into likeOX values(1,'test', 1) ;
+
 commit;
